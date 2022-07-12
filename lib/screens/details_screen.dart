@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/widgets.dart';
+
 class DetailsScreen extends StatelessWidget {
   const DetailsScreen({Key? key}) : super(key: key);
 
@@ -12,8 +14,15 @@ class DetailsScreen extends StatelessWidget {
       slivers: [
         _CustomAppBar(),
         SliverList(
-            delegate: SliverChildListDelegate([
+            delegate: SliverChildListDelegate(const [
           _PosterAndTitle(),
+          _Overview(),
+          _Overview(),
+          _Overview(),
+          _Overview(),
+          _Overview(),
+          _Overview(),
+          CastingCards()
         ])),
       ],
     ));
@@ -34,6 +43,7 @@ class _CustomAppBar extends StatelessWidget {
         title: Container(
             width: double.infinity,
             color: Colors.black12,
+            padding: EdgeInsets.only(bottom: 10),
             alignment: Alignment.bottomCenter,
             child: const Text(
               'movie.title',
@@ -99,6 +109,22 @@ class _PosterAndTitle extends StatelessWidget {
             ],
           )
         ],
+      ),
+    );
+  }
+}
+
+class _Overview extends StatelessWidget {
+  const _Overview({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+      child: Text(
+        'Párrafos. Un párrafo es un fragmento escrito que se caracteriza y diferencia de otros párrafos por tener un punto y aparte. Es decir, un párrafo puede estar constituido por una o más oraciones, pero lo que lo diferencia de otro párrafo es el punto aparte. Veamos estos tres párrafos:',
+        textAlign: TextAlign.justify,
+        style: Theme.of(context).textTheme.subtitle1,
       ),
     );
   }
