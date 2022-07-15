@@ -43,7 +43,7 @@ class _CustomAppBar extends StatelessWidget {
         title: Container(
             width: double.infinity,
             color: Colors.black12,
-            padding: EdgeInsets.only(bottom: 10),
+            padding: const EdgeInsets.only(bottom: 10),
             alignment: Alignment.bottomCenter,
             child: const Text(
               'movie.title',
