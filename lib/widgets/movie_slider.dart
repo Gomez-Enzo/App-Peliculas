@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../models/models.dart';
@@ -45,7 +46,7 @@ class _MovieSliderState extends State<MovieSlider> {
       return SizedBox(
         width: double.infinity,
         height: size.height * 0.5,
-        child: const CircularProgressIndicator(),
+        child: const CupertinoActivityIndicator(),
       );
     }
     return SizedBox(

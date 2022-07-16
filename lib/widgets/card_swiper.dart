@@ -1,4 +1,5 @@
 import 'package:card_swiper/card_swiper.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../models/models.dart';
@@ -19,7 +20,7 @@ class CardSwiper extends StatelessWidget {
       return SizedBox(
         width: double.infinity,
         height: size.height * 0.5,
-        child: const CircularProgressIndicator(),
+        child: const CupertinoActivityIndicator(),
       );
     }
 
