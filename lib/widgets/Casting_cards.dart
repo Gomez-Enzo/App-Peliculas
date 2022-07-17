@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:peliculas/providers/movies_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -37,7 +36,7 @@ class CastingCards extends StatelessWidget {
             itemCount: cast.length,
             scrollDirection: Axis.horizontal,
             itemBuilder: (_, int index) => _CastCard(
-              actor: cast[index],
+              cast: cast[index],
             ),
           ),
         );
@@ -47,10 +46,10 @@ class CastingCards extends StatelessWidget {
 }
 
 class _CastCard extends StatelessWidget {
-  final Cast actor;
+  final Cast cast;
   const _CastCard({
     Key? key,
-    required this.actor,
+    required this.cast,
   }) : super(key: key);
 
   @override
@@ -67,7 +66,7 @@ class _CastCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
             child: FadeInImage(
               placeholder: const AssetImage('assets/no-image.jpg'),
-              image: NetworkImage(actor.fullProfilePath),
+              image: NetworkImage(cast.fullProfilePath),
               height: 140,
               width: 100,
               fit: BoxFit.cover,
@@ -77,7 +76,7 @@ class _CastCard extends StatelessWidget {
             height: 5,
           ),
           Text(
-            actor.name,
+            cast.name,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             textAlign: TextAlign.center,
