@@ -1,6 +1,5 @@
-import 'package:flutter/cupertino.dart';
-
-import '../models/models.dart';
+import 'package:flutter/material.dart';
+import 'package:peliculas/models/models.dart';
 
 class MovieSlider extends StatefulWidget {
   final List<Movie> movies;
@@ -9,22 +8,23 @@ class MovieSlider extends StatefulWidget {
 
   const MovieSlider({
     Key? key,
-    required this.onNextPage,
     required this.movies,
+    required this.onNextPage,
     this.title,
   }) : super(key: key);
 
   @override
-  State<MovieSlider> createState() => _MovieSliderState();
+  _MovieSliderState createState() => _MovieSliderState();
 }
 
 class _MovieSliderState extends State<MovieSlider> {
   final ScrollController scrollController = ScrollController();
+
   @override
   void initState() {
     super.initState();
+
     scrollController.addListener(() {
-      //2460
       if (scrollController.position.pixels >=
           scrollController.position.maxScrollExtent - 500) {
         widget.onNextPage();
@@ -39,60 +39,47 @@ class _MovieSliderState extends State<MovieSlider> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-
-    if (widget.movies.length == 0) {
-      return SizedBox(
-        width: double.infinity,
-        height: size.height * 0.5,
-        child: const CupertinoActivityIndicator(),
-      );
-    }
     return SizedBox(
-        width: double.infinity,
-        height: 250,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            if (widget.title != null)
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                ),
-                child: Text(
-                  '${widget.title}',
-                  style: const TextStyle(
-                      fontSize: 20, fontWeight: FontWeight.bold),
-                ),
+      width: double.infinity,
+      height: 260,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          if (widget.title != null)
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Text(
+                widget.title!,
+                style:
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
-            Expanded(
-              child: ListView.builder(
+            ),
+          const SizedBox(height: 5),
+          Expanded(
+            child: ListView.builder(
                 controller: scrollController,
                 scrollDirection: Axis.horizontal,
                 itemCount: widget.movies.length,
                 itemBuilder: (_, int index) => _MoviePoster(
-                  movie: widget.movies[index],
-                  heroId: '${widget.title}-$index-${widget.movies[index].id}',
-                ),
-              ),
-            ),
-          ],
-        ));
+                    widget.movies[index],
+                    '${widget.title}-$index-${widget.movies[index].id}')),
+          ),
+        ],
+      ),
+    );
   }
 }
 
 class _MoviePoster extends StatelessWidget {
   final Movie movie;
   final String heroId;
-  const _MoviePoster({
-    Key? key,
-    required this.movie,
-    required this.heroId,
-  }) : super(key: key);
+
+  const _MoviePoster(this.movie, this.heroId);
 
   @override
   Widget build(BuildContext context) {
     movie.heroId = heroId;
+
     return Container(
       width: 130,
       height: 190,
@@ -116,9 +103,7 @@ class _MoviePoster extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(
-            height: 5,
-          ),
+          const SizedBox(height: 5),
           Text(
             movie.title,
             maxLines: 2,

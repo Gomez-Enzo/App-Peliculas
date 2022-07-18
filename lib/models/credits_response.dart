@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final creditsResponse = creditsResponseFromMap(jsonString);
-
 import 'dart:convert';
 
 class CreditsResponse {
@@ -62,6 +58,7 @@ class Cast {
     if (profilePath != null) {
       return 'https://image.tmdb.org/t/p/w500$profilePath';
     }
+
     return 'https://i.stack.imgur.com/GNhxO.png';
   }
 

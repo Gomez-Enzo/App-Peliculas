@@ -1,10 +1,6 @@
-// To parse this JSON data, do
-//
-//     final searchResponse = searchResponseFromMap(jsonString);
-
 import 'dart:convert';
 
-import 'models.dart';
+import 'package:peliculas/models/models.dart';
 
 class SearchResponse {
   SearchResponse({

@@ -1,10 +1,6 @@
-// To parse this JSON data, do
-//
-//     final nowPlayingResponse = nowPlayingResponseFromMap(jsonString);
-
 import 'dart:convert';
 
-import 'models.dart';
+import 'movie.dart';
 
 class NowPlayingResponse {
   NowPlayingResponse({
